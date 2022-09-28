@@ -1,0 +1,137 @@
+#profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 120%;
+    padding-bottom: 1%;
+}
+.bio, .bio_public_container {
+    width: 65%;
+}
+#bio {
+    width: 95%;
+    padding: 0.5em;
+    border-radius: 4px;
+    border: none;
+}
+#shelf-container {
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 1em;
+    padding: 0 1em 2em 1em;
+    height: 75%;
+    width: 75%;
+    border-color: rgb(105, 105, 105);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.shelf-row {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin-bottom: -1em;
+    height: 40%;
+    background-color: #848484;
+    /* border: 2px solid white; */
+    overflow: auto;
+    border-color: rgb(105, 105, 105);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.movie {
+    /* height: 7em; */
+    height: 100%;
+    width: auto;
+    margin-right: 1em;
+    border-radius: 10px;
+    transition: box-shadow .3s;
+}
+
+a .movie:hover {
+    box-shadow: 0 0 11px rgba(233,33,33,.9);
+}
+
+a .movie-grab:hover {
+    /* backups */
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab; 
+    /* first */
+  }
+  
+a .movie-grab:active {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+}
+
+
+#bio_public {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: .5em;
+    width: 96%;
+}
+#bio_label {
+    width: 2em;
+}
+
+.bio_public_container{
+    display: flex;
+    align-items: center;
+}
+
+#public_profile_header {
+    display: flex;
+    align-items: center;
+}
+
+#user_picture {
+    width: 3em;
+    height: 3em;
+    border-radius: 10px;
+    margin-right: 1em;
+    border-style: solid;
+    border-color: #181818;
+    border-width: .1em;
+}
+
+#follow_form{
+    margin-left: 2em;
+}
+
+#follow-button {
+    background-color: rgb(105, 105, 105);
+    /* border: solid 2px #848484; */
+    border-radius: 5px;
+}
+
+#following-button {
+    background-color: #181818;
+    /* border: solid 2px black; */
+    border-radius: 5px;
+}
+
+
+h4 {
+    margin-bottom: -0.03em;
+    padding-bottom: 0.3em;
+}
+
+#delete {
+    border: 1px dashed white;
+    padding: 0.3em;
+    border-radius: 10px;
+}
+
+#delete .movie {
+    display: none;
+}

@@ -1,0 +1,17 @@
+{% extends "parent.html" %}
+{% block title %} 404 {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="./static/error.css">
+{% endblock %}
+
+{% block content %}
+<div class="pure-g">
+    <div class="pure-u-1-5"></div>
+    <div class="pure-u-3-5">
+        <h3>{{errorStr}}</h3>
+    </div>
+    <div class="pure-u-1-5"></div>
+</div>
+<div></div>
+{% endblock %}

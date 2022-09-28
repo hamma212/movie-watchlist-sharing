@@ -1,0 +1,54 @@
+.pure-u-1 {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif ;
+}
+
+.pure-u-1-3 {
+    display: flex;
+    justify-content: center;
+}
+
+.div-space {
+    margin-bottom: 3%;
+}
+
+.user-div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    background-color: #bfbfbfca;
+    border: solid 4px #181818;
+    border-radius: 10px;
+    flex-direction: row;
+}
+
+h2 {
+    /* display: inline; */
+    margin-left: 1em;
+    font-size: 18px;
+}
+
+.user_picture {
+    border-radius: 10px;
+    height: 90%;
+    margin-left: .2em;
+}
+
+.user_picture img {
+    border: solid 4px #181818;
+}
+
+#unfollow_form {
+    margin-left: auto;
+    margin-right: 5%;
+}
+
+#unfollow_form button {
+    background-color: #181818;
+    /* margin-left: 3em; */
+    /* justify-self: end; */
+}

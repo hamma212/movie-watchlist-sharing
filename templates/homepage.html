@@ -1,0 +1,86 @@
+{% extends "parent.html" %}
+{% block title %} HomePage {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="../static/homepage.css">
+{% endblock %}
+
+{% block content %}
+<div class="mainPage">
+    <div class="mainPageContent">
+
+        <div class="headerDiv">
+            <h1 class="header">Top Charts</h1>
+        </div>
+        <!-- <div class="websiteLogo">
+            <img class="logo" src="../source/image.JPG" />
+        </div> -->
+
+        <div class="topList">
+
+            <div class="wantToWatch">
+                <div class="WatchTitle">
+                    <h2>Top 5 in Want To Watch:</h2>
+                </div>
+                <div class="WatchList">
+                    {% for movie in will_watch_info %}
+                        {% if movie['poster'] %}
+                            <div class="imageDiv">
+                                <a class="movie" href="{{movie['link']}}"><img class="movie movieImage" src="{{movie['poster']}}" alt="{{movie['title']}}" title="{{ movie['title'] }}"/></a>
+                            </div>
+                        {% else %}
+                            <div class="imageDiv_missing">
+                                <a class="movie" href="{{movie['link']}}">{{movie['title']}}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="watching">
+                <div class="WatchTitle">
+                    <h2>Top 5 in Watching:</h2>
+                </div>
+                <div class="WatchList">
+                    {% for movie in watching_info %}
+                        {% if movie['poster'] %}
+                            <div class="imageDiv">
+                                <a class="movie" href="{{movie['link']}}"><img class="movie movieImage" src="{{movie['poster']}}" alt="{{movie['title']}}" title="{{ movie['title'] }}"/></a>
+                            </div>
+                        {% else %}
+                            <div class="imageDiv_missing">
+                                <a class="movie" href="{{movie['link']}}">{{movie['title']}}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="watched">
+                <div class="WatchTitle">
+                    <h2>Top 5 in Watched:</h2>
+                </div>
+                <div class="WatchList">
+                    {% for movie in watched_info %}
+                        {% if movie['poster'] %}
+                            <div class="imageDiv">
+                                <a class="movie" href="{{movie['link']}}"><img class="movie movieImage" src="{{movie['poster']}}" alt="{{movie['title']}}" title="{{ movie['title'] }}"/></a>
+                            </div>
+                        {% else %}
+                            <div class="imageDiv_missing">
+                                <a class="movie" href="{{movie['link']}}">{{movie['title']}}</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    </div>
+</div>
+{% endblock %}

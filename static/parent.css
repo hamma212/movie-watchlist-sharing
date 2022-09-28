@@ -1,0 +1,239 @@
+
+html {
+    height: 100%;
+}
+
+
+body {
+    /* height: 300%; */
+    height: 100%;
+    background-color: #782021;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif;
+}
+
+div {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif !important;
+}
+
+#content {
+    height: 100%;
+}  
+
+
+nav {
+    /* height: 400px; */
+    height: 46.39px;
+}
+
+.navbar {
+   overflow: hidden;
+
+   /* background-color: rgb(22, 22, 22); */
+   background-color: #181818;
+   height: 100%;
+   /* border-bottom: 2px solid rgb(105, 105, 105); */
+   border-bottom: 2px solid rgb(105, 105, 105);
+
+}
+
+.search_container{
+    /* display: block; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 30%;
+    /* margin-top: .4em; */
+    margin: auto;
+    /* background-color: blue; */
+    height: 100%;
+
+    /* background-color: #c40000; */
+}
+
+#search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#search_options {
+    height: 52%;
+    width: 22%;
+    text-align: center;
+}
+
+#searchbox {
+    /* float: left; */
+    /* height: 60%;   */
+    width: 60%; 
+    /* position: relative; */
+    padding-left: 15px;
+}
+#search_button{
+    /* height: 60%; */
+    width: auto;
+}
+
+
+
+
+.left_nav_tabs, .left_nav_tabs:visited{
+    float: left;
+
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+
+.right_nav_tabs, .right_nav_tabs:visited{
+    float: right;
+
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+
+    /* margin-left: auto;
+    display: block; */
+
+    /* height: 2em;
+    width: 2em; */
+    /* padding: .5em; */
+    /* background-color: #c40000; */
+
+}
+
+
+
+.navbar .left_nav_tabs:hover, .navbar .right_nav_tabs:hover {
+    background-color: #f5f3f4;
+    color: black;
+}
+
+/* a:visited{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+} */
+
+.profile_dropdown{
+    overflow: hidden;
+    /* margin-top: .4em;
+    margin-right: .8em; */
+    float: right;
+    /* display: inline-block; */
+    /* width: 3%; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .1%;
+}
+
+.profile_dropdown_content{
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 44px;
+    right: 0;
+    width: auto;
+
+    background-color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-color:#181818;
+    border-width: 3px;
+    
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.profile_dropdown_content div{
+    padding-right: .5em;
+}
+
+.profile_dropdown_content a, .profile_dropdown_content a:visited{
+    position: relative;
+    display: block;
+    text-align: left;
+    /* border-style: solid;
+    border-color: #000000; */
+
+    padding: 5px;
+    text-decoration: none;
+    /* color:rgb(185, 0, 0); */
+    color: #782021 !important;
+}
+
+.profile_dropdown_content a:hover{
+    background-color: #181818; 
+    color: white !important;
+    /* border-style: solid; */
+    /* border-color: #782021; */
+}
+
+.profile_dropdown_content div {
+    color:#782021;
+    padding-left: .5em;
+    padding-top: .5em;
+    border-bottom: #782021 solid 1px;
+}
+
+#profile_dropdown_button{
+    /* background-color: green; */
+    /* float: right; */
+    height: 90%;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: .1em;
+    border-color: #181818;
+}
+
+
+@media screen and (max-width: 1058px) {
+    nav{
+        height: 11em;
+    }
+    .navbar a, .search_container  {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .profile_dropdown{
+        display: none;
+    }
+    .search_container {
+        height: 14%;
+        padding: 0;
+    }
+    #search {
+        justify-content: start;
+        padding: 0;
+        margin-left: 2%;
+    }
+    #search_options {
+        height: 1.55em;
+    }
+
+}

@@ -1,0 +1,124 @@
+{% extends "parent.html" %}
+{% block title %} Search {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/search.css">
+<link rel="stylesheet" href="/static/global.css">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <ol>
+            <h2>Search Results for {{searchQuery}}...</h2>
+            <!-- Loop through search results  -->
+            {% for media in motionPictures %}
+            <li>
+                <div class="container pure-g">
+                    <div class="box box-1 pure-u-1-8">
+                    </div>
+                    <!-- If movie  -->
+                    {% if  media['media_type'] == "movie" %}
+                        <!-- Movie Poster -->
+                        <div class="box box-2 pure-u-1-5">
+                            <a href="/mediaInfo/{{media['media_type']}}/{{media['id']}}">
+                                <img class="box-2 pure-img  pure-u-lg-4-6"src="https://image.tmdb.org/t/p/original/{{media['poster_path']}}" alt="{{media['title']}}">
+                            </a>
+                        </div>
+                        <!-- End of Movie Poster -->
+
+                        <!-- Movie info -->
+                        <div class="box box-3 pure-u-1-5">
+                            <br>
+                            <a href="/mediaInfo/{{media['media_type']}}/{{media['id']}}">
+                               <h2 class="media-title">{{media['title']}} </h2> 
+                            </a>  
+                            <br>
+                            <br>
+                            <br>
+                            <h4>Media Type: Movie</h4>    
+                            <h4>Release Date: {{media['release_date']}}</h4>
+                            <br>
+                            {% if addedLists[media['id']] != 'null' %}
+                                <div>&#9989 Media in your <b>{{ addedLists[media['id']] }}</b> list.</div>
+                            {% endif %}
+                        </div>
+                        <!-- End of Movie info -->
+                    <!-- else Series -->
+                    {% elif media['media_type'] == "tv" %}
+                        <!-- Series Poster -->
+                        <div class="box box-2 pure-u-1-5">
+                            <a href="/mediaInfo/{{media['media_type']}}/{{media['id']}}">
+                                <img class="box-2 pure-img  pure-u-lg-4-6"src="https://image.tmdb.org/t/p/original/{{media['poster_path']}}" alt="{{media['name']}}">
+                            </a>
+                        </div>
+                        <!-- End of Series Poster -->
+
+                        <!-- Series info -->
+                        <div class="box box-3 pure-u-1-5">
+                            <br>
+                            <a href="/mediaInfo/{{media['media_type']}}/{{media['id']}}">
+                                <h2 class="media-title">{{media['name']}} </h2> 
+                            </a>  
+                            <br>
+                            <br>
+                            <br>
+                            <h4>Media Type: TV Series</h4>        
+                            <h4>First Aired: {{media['first_air_date']}}</h4>
+                            <br>
+                            {% if addedLists[media['id']] != 'null' %}
+                                <div>&#9989 Media in your <b>{{ addedLists[media['id']] }}</b> list.</div>
+                            {% endif %}
+                        </div>
+                        <!-- End of Series info -->
+                    {% endif %}
+
+                    <!-- Make sure media is type movie or show not person -->
+                    {% if media['media_type'] == "tv" or media['media_type'] == "movie" %}
+                        <!-- Form to choose and add Movie/Series to specifies list -->
+                        <div class="box box-4 add-media-box pure-u-1-5">
+                            <form action="{{url_for('addToList')}}" method="post" class="pure-form pure-form-aligned" >
+                                <input type="hidden" id="mediaID" name="mediaID" value="{{media['id']}}">
+                                <input type="hidden" id="media_type" name="media_type" value="{{media['media_type']}}">
+                                {% if  media['media_type'] == "movie" %}
+                                    <input type="hidden" id="media_title" name="media_title" value="{{media['title']}}">
+                                    <input type="hidden" id="media_poster" name="media_poster" value="https://image.tmdb.org/t/p/original/{{media['poster_path']}}">
+                                {% elif media['media_type'] == "tv" %}
+                                    <input type="hidden" id="media_title" name="media_title" value="{{media['name']}}">
+                                    <input type="hidden" id="media_poster" name="media_poster" value="https://image.tmdb.org/t/p/original/{{media['poster_path']}}">
+                                {% endif %}
+
+                                {% if addedLists[media['id']] == 'null' %}
+                                    <label for="listType"><b>Add to:</b></label>
+                                {% else %}
+                                    <label for="listType"><b>Move to:</b></label>
+                                {% endif %}
+
+                                <select id="listType" class="pure-input-1-5" name="listType">
+                                    {% if addedLists[media['id']] != 'Want to Watch' %}
+                                        <option value="will_watch">Want to Watch</option>
+                                    {% endif %}
+                                    {% if addedLists[media['id']] != 'Watching' %}
+                                        <option value="watching">Watching</option>
+                                    {% endif %}
+                                    {% if addedLists[media['id']] != 'Watched' %}
+                                        <option value="watched">Watched</option>
+                                    {% endif %}
+                                </select>
+                                <button type="submit" class="pure-button pure-button-primary pure">Add</button>
+                            </form>
+                        </div>
+                        <!-- End of Form -->
+                    {% endif %}
+
+                </div>
+            </li>
+            {% endfor %}
+            <!-- End of Loop -->
+        </ol>
+        
+    </div>
+        
+    
+{% endblock %}

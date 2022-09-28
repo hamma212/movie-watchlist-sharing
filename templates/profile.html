@@ -1,0 +1,105 @@
+{% extends "parent.html" %}
+{% block title %} Profile {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/profile.css">
+{% endblock %}
+{% block content %}
+    <div id="profile-container">
+        <h1>My Watchlist</h1>
+            
+            <form class="bio"action="/update_bio" method="post">
+                <label for="bio">Bio: </label>
+                <input id="bio" name="bio" type="text" placeholder="{{ user_profile[0].bio }}">
+            </form>
+        <div id="shelf-container">
+            <h4>Want to Watch:</h4>
+            <div id="will_watch" class="shelf-row">
+                {% for movie in will_watch_info %}
+                    <a class="movie movie-grab" id="{{movie['id']}}" href="{{movie['link']}}"><img class="movie movie-grab" src="{{movie['poster']}}" alt="{{movie['title']}}" title="{{ movie['title'] }}"></a>
+                {% endfor %}
+            </div>
+            <h4>Watching:</h4>
+            <div id="watching" class="shelf-row">
+                {% for movie in watching_info %}
+                    <a class="movie movie-grab" id="{{movie['id']}}" href="{{movie['link']}}"><img class="movie movie-grab" src="{{movie['poster']}}" alt="{{movie['title']}}" title="{{ movie['title'] }}"></a>
+                {% endfor %}
+            </div>
+            <h4>Watched:</h4>
+            <div id="watched" class="shelf-row">
+                {% for movie in watched_info %}
+                    <a class="movie movie-grab" id="{{movie['id']}}" href="{{movie['link']}}"><img class="movie movie-grab" src="{{movie['poster']}}" alt="{{movie['title']}}" title="{{ movie['title'] }}"></a>
+                {% endfor %}
+            </div>
+        </div>
+        <i id ="delete" class="fa fa-trash fa-4x" aria-hidden="true"></i>
+    </div>
+    <script>
+        const movies = document.querySelectorAll(".movie");
+        const shelfRows = document.querySelectorAll(".shelf-row");
+        const trash = document.getElementById('delete');
+
+        var currentMovie;
+        var start;
+        var end;
+        var media_id;
+
+        movies.forEach(movie => {
+            movie.addEventListener('dragstart', () =>  {
+                media_id = movie.getAttribute('id');
+                start = movie.parentElement.getAttribute('id')
+                currentMovie = movie;
+            })
+        })
+
+        shelfRows.forEach(row => {
+            row.addEventListener('dragover', e => {
+                e.preventDefault();
+            })
+            row.addEventListener('drop', e => {
+                row.appendChild(currentMovie);
+                end = currentMovie.parentElement.getAttribute('id')
+                console.log(start)
+                console.log(end)
+                if (start !== end) {
+                    console.log("changing");
+                    $.ajax({
+                        url: "{{url_for('update_list')}}", 
+                        data: {
+                            start: start,
+                            end: end,
+                            media_id: media_id
+                        }, 
+                        type: 'POST'
+                    })
+                }
+            })
+        });
+
+        trash.addEventListener('dragover', e => {
+            e.preventDefault();
+        })
+
+        trash.addEventListener('drop', e => {
+            trash.appendChild(currentMovie);
+                end = currentMovie.parentElement.getAttribute('id')
+                console.log(start)
+                console.log(end)
+                if (start !== end) {
+                    console.log("changing");
+                    $.ajax({
+                        url: "{{url_for('update_list')}}", 
+                        data: {
+                            start: start,
+                            end: end,
+                            media_id: media_id
+                        }, 
+                        type: 'POST'
+                    })
+                }
+            });
+
+
+
+    </script>
+{% endblock %}

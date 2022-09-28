@@ -1,0 +1,30 @@
+.pure-g > div[class*="pure-u-"] {
+    padding: 0.5em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+#add-form {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#wl-count {
+    text-align: center;
+}
+
+.name {
+    height: 2em;
+}
+
+.pure-button{
+    background-color: #181818;
+}

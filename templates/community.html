@@ -1,0 +1,84 @@
+{% extends "parent.html" %}
+{% block title %} Community {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="../static/community.css">
+{% endblock %}
+
+{% block content %}
+    <div class="mainPage">
+        <div class="mainPageContent">
+
+            <div class="headerDiv">
+                <h1 class="header">Top Users</h1>
+            </div>
+            
+            <div class="topUserList pure-g">
+
+                <div class="wantToWatch_userlist pure-u-1">
+                    <div class="userTitle pure-u-1-3 pure-u-md-1-2 pure-u-lg-1">
+                        {% if is_will_watch %}
+                            <h2>Based on your Want to Watch items check out:</h2>
+                        {% else %}
+                            <h2>Want to Watch lists you may like:</h2>
+                        {% endif %}              
+                    </div>
+                    <div class="userList pure-u-1">
+                        {% for user in will_watch_users %}
+                            <div class="communityImageDiv">
+                                <a class="user" href={{user['link']}}><img class="user userImage pure-img pure-u-1-5" src="{{user['info'].picture}}" title="{{ user['info'].username }}"/> </a>
+                                <p class="userName">{{ user['info'].username }}</p>
+                            </div>
+                        {% endfor %}                        
+                    </div>
+                </div>
+
+                <div class="watching_userlist pure-u-1">
+                    <div class="userTitle pure-u-1-3 pure-u-md-1-2 pure-u-lg-1">
+                        {% if is_watching %}
+                            <h2>Based on Watching items check out:</h2>
+                        {% else %}
+                            <h2>Watching lists you may like:</h2>
+                        {% endif %}                 
+                    </div>
+                    <div class="userList pure-u-1">
+                        {% for user in watching_users %}
+                            <div class="communityImageDiv">
+                                <a class="user" href={{user['link']}}><img class="user userImage pure-img pure-u-1-5" src="{{user['info'].picture}}" title="{{ user['info'].username }}"/> </a>
+                                <p class="userName">{{ user['info'].username }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div> 
+
+                <div class="watched_userlist pure-u-1">
+                    <div class="userTitle pure-u-1-3 pure-u-md-1-2 pure-u-lg-1">
+                        {% if is_watched %}
+                            <h2>Based on Watched items check out:</h2>
+                        {% else %}
+                            <h2>Watched lists you may like:</h2>
+                        {% endif %}
+                    </div>
+                    <div class="userList pure-u-1">
+                        {% for user in watched_users %}
+                            <div class="communityImageDiv">
+                                <a class="user" href={{user['link']}}><img class="user userImage pure-img pure-u-1-5" src="{{user['info'].picture}}" title="{{ user['info'].username }}"/> </a>
+                                <p class="userName">{{ user['info'].username }}</p>
+                            </div>
+                        {% endfor %}                        
+                    </div>
+                </div>
+
+
+                
+ 
+
+            </div>
+
+        </div>
+
+
+        </div>
+
+    </div>
+    {% endblock %}

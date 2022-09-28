@@ -1,0 +1,107 @@
+{% extends "parent.html" %}
+{% block title %} Welcome {% endblock %}
+
+
+{% block head %}
+  <link rel="stylesheet" href="/static/welcome.css">
+  <script src="/static/welcome.js" defer></script>
+  <style>
+    #learn-more-btn {
+      margin-top: 2em;
+      background-color: #782021;
+      color: white;
+      border: 1px solid white;
+    }
+    #learn-more-btn:hover {
+      background-color: white;
+      color: #782021;
+      border: 1px solid #181818;
+    }
+    #learn-more-content {
+      background-color: #530000;
+      color: white;
+      border-radius: 7px;
+      max-width: 40em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+{% endblock %}
+
+<!-- make original search block empty to make a new one -->
+{% block searchBlock %}{% endblock %}
+
+
+
+{% block content %}
+  <div class="splash-container">
+    <div class="splash">
+      <!-- website name -->
+      <h1 class="splash-head">MediaMadness</h1>
+      <!-- end website name -->
+
+      <!-- search area -->
+      <div class="welcome_search_container">
+          
+        <form action="/search" id="welcome_search_form" class="welcome_search" method="get">
+
+          <select name="search_options" id="welcome_search_options" class="welcome_search welcome_search_tools search_options_js">
+            <option value="media" selected>Media</option>
+            <option value="users">Users</option>
+            <!-- option for all???? -->
+          </select>
+          <!-- add javascript to change placeholder depending on search option -->
+          <input class="welcome_search_tools searchbox_js"  id="welcome_searchbox" name="search_query" type="text" placeholder="Search for media..." name="search"
+              oninvalid="this.setCustomValidity('Start by entering a search query')" oninput="this.setCustomValidity('')" required>
+          <button  class="welcome_search_tools" type="submit" id="welcome_search_button"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <!-- end search area -->
+      <div>
+        <button id="learn-more-btn" class="pure-button">Learn More!</button>
+        <p id="learn-more-content" style="display: none">
+          <br>
+          <strong>Welcome to MediaMadness!</strong><br><br>
+          Sign Up or Log In to add media to your watchlist. <br><br>
+          Click on a media item to view more info about it. <br><br>
+          Visit the Home page to see the top charts. <br><br>
+          Visit the Community page to discover new content you may like. <br><br>
+          Follow users who have similar interests to you.
+          <br><br>
+        </p>
+      </div>
+    </div>
+    
+  
+  </div>
+
+  </div>
+  <footer>
+    <div class="pure-u-1-6 pure-img" >
+      <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg" alt="themoviedb_logo.jpg">
+    </div>
+    <p>This product uses the TMDB API but is not endorsed or certified by TMDB.
+    </p>
+
+  </footer>
+  <script>
+    const learnMoreBtn = document.getElementById("learn-more-btn");
+    const learnMoreContent = document.getElementById("learn-more-content");
+    learnMoreBtn.addEventListener('click', displayContent);
+    function displayContent() {
+      if (learnMoreContent.style.display == 'none') {
+        learnMoreContent.style.display = 'block';
+        learnMoreBtn.textContent = 'Close';
+      }
+      else {
+        learnMoreContent.style.display = 'none';
+        learnMoreBtn.textContent = 'Learn More!';
+      }
+    }
+  </script>
+  
+
+{% endblock %}
+
+
+

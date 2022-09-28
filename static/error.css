@@ -1,0 +1,6 @@
+.pure-g > div[class*="pure-u-"] {
+    padding: 1em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

@@ -1,0 +1,80 @@
+{% extends "parent.html" %}
+{% block title %} Search {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/search.css">
+<link rel="stylesheet" href="/static/global.css">
+{% endblock %}
+
+<!-- if user searches for user, leave search option as users -->
+{% block searchOption %}
+    <option value="media">Media</option>
+    <option value="users" selected>Users</option>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <ol>
+            <h2>Search Results for User {{searchQuery}}...</h2>
+            <!-- Loop through search results  -->
+            {% for user in users %}
+                <li>
+                    <div class="container pure-g">
+                        
+                        <div class="box box-1 pure-u-1-6">
+                        </div>
+                        
+
+                        <!-- User Profile Picture -->
+                        <div class="box box-2 pure-u-1-6">
+                            <a class="user-picture" href="/user/{{user['user_id']}}">
+                                <img class="pure-img user-picture pure-u-lg-4-6"src="{{user.picture}}" alt="profile-pic">
+                            </a> 
+
+                        </div>
+                        <!-- End of User Profile Picture -->
+
+                        <!-- User info -->
+                        <div class="box box-3-user pure-u-1-6">
+                            <a href="/user/{{user['user_id']}}">
+                                <h2>@{{user.username}}</h2> 
+
+                            </a> 
+                            {% if not user['is_followed'] %}
+                                <form action="{{ url_for('add_new_follow') }}" method="post" class="pure-form pure-form-aligned" id="follow_form">
+                                    <input type="hidden" id="followee" name="followee" value="{{ user.user_id }}">
+                                    <button id="follow-button" type="submit" class="pure-button pure-button-primary pure">Follow</button>
+                                </form>
+                            
+                            {% else %}
+                                <form action="{{ url_for('unfollow') }}" method="post" class="pure-form pure-form-aligned" id="follow_form">
+                                    <input type="hidden" id="followee" name="followee" value="{{ user.user_id }}">
+                                    <button id="following-button" type="submit" class="pure-button pure-button-primary pure"><i class="fa fa-check" aria-hidden="true"></i> Following</button>
+                                </form>
+                            {% endif %}
+
+                            {#<h3 class="bio-label">Bio:</h3>
+                            <p class="bio-desc">{{user.bio}}</p>#}
+
+                        </div>
+
+
+
+                        
+                        <div class="box box-4 pure-u-1-5">
+                            <h3 class="bio-label">Bio:</h3>
+                            <p class="bio-desc">{{user.bio}}</p>
+                        </div>
+                        
+                    </div>
+                </li>
+            {% endfor %}
+            <!-- End of Loop -->
+        </ol>
+        
+    </div>
+        
+    
+{% endblock %}

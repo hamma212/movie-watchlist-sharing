@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+
+  <script src="/static/parent.js" defer></script>
+
+  <!-- css -->
+  <link rel="stylesheet" href="/static/parent.css">
+
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- PureCSS -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+  {% block head %}
+  {% endblock %}
+
+  <title> {% block title %}{% endblock %} - MediaMadness</title>
+
+
+</head>
+
+
+<body>
+  <nav>
+    <div class="navbar">
+
+      <a href="/welcome" id="Home" class="left_nav_tabs" >MediaMadness</a>
+      
+      <a href="{{ url_for('home') }}" class="left_nav_tabs">Home</a>
+      <a href="{{ url_for('community') }}" class="left_nav_tabs">Community</a>
+
+          <!-- IF USER LOGGED IN -->
+
+      {% if isLoggedIn %}
+        <div class="profile_dropdown">
+          <!-- <i id="profile_dropdown_button"class="fa fa-user-circle fa-2x"></i> -->
+          <img id="profile_dropdown_button" src={{ profilePicture }}>
+
+          <div class="profile_dropdown_content">
+            <div>Signed in as <br><b>{{ email }}</b></div>
+            <a href="/profile" class="">My Watchlist</a>
+            <!-- <a href="#settings" class="">Settings</a> -->
+            <a href="/following" class="">Following</a>
+            <a href="/logout" class="">Logout</a>
+          </div>
+        
+        </div>
+      {% else %}
+
+      <!-- IF USER NOT LOGGED IN -->
+        <a id="login_button" href="/login" class="right_nav_tabs">Sign in</a>
+      {% endif %}
+
+
+      {% block searchBlock %}
+
+
+
+
+
+      <div class="search_container">
+
+        <form action="/search" id="search" method="get">
+          <select name="search_options" id="search_options" class="search_options_js">
+            {% block searchOption %}
+            <option value="media" selected>Media</option>
+            <option value="users">Users</option>
+            {% endblock %}
+            <!-- option for all???? -->
+          </select>
+          <input id="searchbox" class="searchbox_js" name="search_query" type="text" placeholder="Search for media..." name="search"
+              oninvalid="this.setCustomValidity('Start by entering a search query')" oninput="this.setCustomValidity('')" required>
+          <button type="submit" id="search_button"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      {% endblock %}
+
+
+    </div>
+  </nav>
+
+
+
+  <div id="content">
+      {% block content %}
+      {% endblock %}
+  </div>
+
+
+</body>

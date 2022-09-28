@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+gunicorn = "*"
+jinja2 = "*"
+psycopg2-binary = "*"
+authlib = "*"
+flask = "*"
+python-jose = "*"
+requests = "*"
+numpy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

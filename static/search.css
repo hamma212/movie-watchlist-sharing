@@ -1,0 +1,112 @@
+/* Fix Search result image size */
+.container .pure-img {
+    width:70%;
+    max-width: 100%;
+    border: solid 10px #181818 ;
+}
+/* Give div's some padding */
+.container div{
+    padding: 1%;
+}
+/* Get rid of list bullets */
+.container li{
+    list-style: none;
+}
+
+
+.box-2{
+    border-left: solid 4px #181818;
+    border-top: solid 4px #181818;
+    border-bottom: solid 4px #181818;
+    background-color: #bfbfbfca;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    padding-right: 0px;
+    
+}
+
+.box-3{
+    /* border-top: solid 2px black;
+    border-left: solid 2px black; */
+
+
+    border-top: solid 4px #181818;
+    border-bottom: solid 4px #181818;
+    background-color: #bfbfbfca;
+
+} 
+.box-3-user{
+    /* border-top: solid 2px black;
+    border-left: solid 2px black; */
+
+
+    border-top: solid 4px #181818;
+    border-bottom: solid 4px #181818;
+    /* border-right: solid 4px black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; */
+
+    background-color: #bfbfbfca;
+
+} 
+
+.box-4{
+    /* border-right: solid 2px black;
+    border-bottom: solid 2px black; */
+
+
+    border-right: solid 4px #181818;
+    border-top: solid 4px #181818;
+    border-bottom: solid 4px #181818;
+    background-color: #bfbfbfca;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.pure-img {
+    border-radius: 10px;
+}
+
+.pure-form {
+    margin-top: 40%;
+}
+.add-media-box{
+    text-align: center;
+}
+.box button{
+    background-color: #181818;
+}
+
+
+.user-picture{
+    /* width: 300px; */
+    /* height: 100%; */
+    /* width: 100%; */
+    
+}
+
+
+.bio-label{
+    margin-bottom: 5px;
+    padding-left: 0;
+}
+.bio-desc{
+    margin-top: 0;
+    padding-left: 0;
+   
+}
+
+#follow-button {
+    border-radius: 5px;
+    background-color: rgb(105, 105, 105);
+}
+
+#following-button {
+    border-radius: 5px;
+}
+
+/* .box-3 h2 {
+    display: inline;
+} */
+

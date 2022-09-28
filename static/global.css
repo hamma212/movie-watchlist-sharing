@@ -1,0 +1,24 @@
+a:link {
+    color: #ffffff;
+}
+
+/* visited link */
+a:visited {
+    /* color: #848484; */
+    color: #181818;
+
+}
+
+/* mouse over link */
+a:hover {
+    color: lightseagreen;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+/* a {
+    text-decoration: none;
+} */
